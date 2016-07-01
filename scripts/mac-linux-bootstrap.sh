@@ -159,8 +159,12 @@ if [ ! -d "/opt/ansible" ]; then
   sudo mkdir /opt/ansible
 fi
 
-if [ ! -d "/opt/ansible/pull" ]; then
+if [ ! -d "/opt/ansible/configuration" ]; then
   sudo git clone --branch=$branch https://github.com/cweagans/infrastructure.git /opt/ansible/configuration
+else
+  pushd /opt/ansible/configuration
+    sudo git pull
+  popd
 fi
 
 # Run the playbooks for this machine. This will also configure a cron job that
