@@ -4,10 +4,8 @@
 set -e
 
 if [ -z "$1" ]; then
-  echo "No argument provided."
+  echo "No hostname provided."
   echo "Usage: mac-linux-bootstrap.sh hostname.for.new.machine.local"
-  echo ""
-  echo "Alternatively: curl http://example.com/path/to/mac-linux-bootstrap.sh | bash -- hostname.for.new.machine.local"
   exit 1
 fi
 
