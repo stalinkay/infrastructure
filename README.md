@@ -34,7 +34,7 @@ curl https://raw.githubusercontent.com/cweagans/infrastructure/master/scripts/ma
 **Development**:
 
 ```
-curl https://raw.githubusercontent.com/cweagans/infrastructure/develop/scripts/mac-linux-bootstrap.sh | bash -s -- hostname.local
+curl https://raw.githubusercontent.com/cweagans/infrastructure/master/scripts/mac-linux-bootstrap.sh | bash -s -- hostname.local develop
 ```
 
 ## Support

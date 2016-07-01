@@ -9,6 +9,12 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
+if [ -z "$2" ]; then
+  branch="master"
+else
+  branch="$2"
+fi
+
 # Bail out if we're in a Windows environment.
 case "$OSTYPE" in
   win*)
@@ -154,7 +160,7 @@ if [ ! -d "/opt/ansible" ]; then
 fi
 
 if [ ! -d "/opt/ansible/pull" ]; then
-  sudo git clone https://github.com/cweagans/infrastructure.git /opt/ansible/configuration
+  sudo git clone --branch=$branch https://github.com/cweagans/infrastructure.git /opt/ansible/configuration
 fi
 
 # Run the playbooks for this machine. This will also configure a cron job that
