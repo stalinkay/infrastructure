@@ -1,0 +1,27 @@
+---
+
+- name: "Enable Homebrew Taps"
+  homebrew_tap:
+    tap: "{{ item }}"
+    state: present
+  with_items: mac_homebrew_taps
+
+- name: "Update Homebrew"
+  homebrew:
+    update_homebrew: yes
+
+- name: "Install Homebrew packages"
+  homebrew:
+    name: "{{ item }}"
+    state: present
+  with_items: mac_homebrew_packages
+
+- name: "Install Homebrew Casks"
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  with_items: mac_homebrew_casks
+
+- name: "Upgrade packages"
+  homebrew:
+    upgrade_all: yes
