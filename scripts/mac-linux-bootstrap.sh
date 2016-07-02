@@ -3,6 +3,18 @@
 # Exit on a nonzero exit code.
 set -e
 
+if [ -z "$1" ]; then
+  echo "No hostname provided."
+  echo "Usage: mac-linux-bootstrap.sh hostname.for.new.machine.local"
+  exit 1
+fi
+
+if [ -z "$2" ]; then
+  branch="master"
+else
+  branch="$2"
+fi
+
 # Bail out if we're in a Windows environment.
 case "$OSTYPE" in
   win*)
@@ -53,16 +65,19 @@ case "$(uname)" in
 
     # Configure the system hostname so that we can use the right playbook for
     # provisioning.
-    echo "Enter this system's hostname. Note that this MUST EXACTLY MATCH the"
-    echo "hostname configured in the Ansible inventory or provisioning will NOT"
-    echo "work as expected."
-    read new_hostname
-    echo "You entered: $new_hostname"
+    echo "The hostname that you've chosen for this machine is:"
+    echo ""
+    echo "  $1"
+    echo ""
+    echo "Note that this MUST EXACTLY MATCH the hostname configured in the Ansible"
+    echo "inventory or provisioning will NOT work as expected. DOUBLE CHECK THIS"
+    echo "VALUE RIGHT NOW."
+    echo ""
     echo "Waiting 10 seconds before continuing. If you made a typo, now is the time"
     echo "to Ctrl+C before provisioning continues!"
-    sleep 7
+    sleep 6
     echo "Seriously! You better be sure!"
-    sleep 1
+    sleep 2
     echo "Last chance!"
     echo "3"
     sleep 1
@@ -70,13 +85,13 @@ case "$(uname)" in
     sleep 1
     echo "1"
     sleep 1
-    echo "Setting hostname to $new_hostname and continuing..."
+    echo "Setting hostname to $1 and continuing..."
 
-    sudo scutil --set ComputerName $new_hostname
-    sudo scutil --set HostName $new_hostname
+    sudo scutil --set ComputerName $1
+    sudo scutil --set HostName $1
     # @TODO: This is failing for some reason.
     # sudo scutil --set LocalHostName $new_hostname
-    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $new_hostname
+    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $1
     ;;
 
   "Linux")
@@ -103,16 +118,19 @@ case "$(uname)" in
 
     # Configure the system hostname so that we can use the right playbook for
     # provisioning.
-    echo "Enter this system's hostname. Note that this MUST EXACTLY MATCH the"
-    echo "hostname configured in the Ansible inventory or provisioning will NOT"
-    echo "work as expected."
-    read new_hostname
-    echo "You entered: $new_hostname"
+    echo "The hostname that you've chosen for this machine is:"
+    echo ""
+    echo "  $1"
+    echo ""
+    echo "Note that this MUST EXACTLY MATCH the hostname configured in the Ansible"
+    echo "inventory or provisioning will NOT work as expected. DOUBLE CHECK THIS"
+    echo "VALUE RIGHT NOW."
+    echo ""
     echo "Waiting 10 seconds before continuing. If you made a typo, now is the time"
     echo "to Ctrl+C before provisioning continues!"
-    sleep 7
+    sleep 6
     echo "Seriously! You better be sure!"
-    sleep 1
+    sleep 2
     echo "Last chance!"
     echo "3"
     sleep 1
@@ -120,9 +138,10 @@ case "$(uname)" in
     sleep 1
     echo "1"
     sleep 1
-    echo "Setting hostname to $new_hostname and continuing..."
+    echo "You can't say you weren't given ample notice!"
+    echo "Setting hostname to $1 and continuing..."
 
-    sudo hostnamectl set-hostname $new_hostname
+    sudo hostnamectl set-hostname $1
     ;;
 
   "*")
@@ -140,8 +159,12 @@ if [ ! -d "/opt/ansible" ]; then
   sudo mkdir /opt/ansible
 fi
 
-if [ ! -d "/opt/ansible/pull" ]; then
-  sudo git clone https://github.com/cweagans/infrastructure.git /opt/ansible/configuration
+if [ ! -d "/opt/ansible/configuration" ]; then
+  sudo git clone --branch=$branch https://github.com/cweagans/infrastructure.git /opt/ansible/configuration
+else
+  pushd /opt/ansible/configuration
+    sudo git pull
+  popd
 fi
 
 # Run the playbooks for this machine. This will also configure a cron job that

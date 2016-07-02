@@ -12,8 +12,8 @@ if ping -q -c 1 -W 1 github.com >/dev/null; then
     # Only pull if we need to.
     LOCAL_REF=$(git rev-parse @)
     REMOTE_REF=$(git rev-parse @{u})
-    if [ "$LOCAL" != "$REMOTE" ]; then
-      git pull origin master
+    if [ "$LOCAL_REF" != "$REMOTE_REF" ]; then
+      git pull
     fi
   popd
 fi
