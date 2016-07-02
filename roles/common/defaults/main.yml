@@ -36,6 +36,7 @@ darwin_homebrew_casks:
   - steelseries-engine
   - transmission
   - vlc
+homebrew_become_user: "cweagans"
 
 # Debian configuration
 debian_apt_repos:

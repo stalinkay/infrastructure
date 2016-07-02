@@ -5,23 +5,34 @@
     tap: "{{ item }}"
     state: present
   with_items: "{{ darwin_homebrew_taps }}"
+  become: Yes
+  become_user: "{{ homebrew_become_user }}"
 
 - name: "Update Homebrew"
   homebrew:
     update_homebrew: yes
+  become: Yes
+  become_user: "{{ homebrew_become_user }}"
 
 - name: "Install Homebrew packages"
   homebrew:
     name: "{{ item }}"
     state: present
   with_items: "{{ darwin_homebrew_packages }}"
+  become: Yes
+  become_user: "{{ homebrew_become_user }}"
 
 - name: "Install Homebrew Casks"
   homebrew_cask:
     name: "{{ item }}"
     state: present
   with_items: "{{ darwin_homebrew_casks }}"
+  become: Yes
+  become_user: "{{ homebrew_become_user }}"
 
-- name: "Upgrade packages"
-  homebrew:
-    upgrade_all: yes
+# @TODO: Not sure this is a great idea, and unlikely to be done on Linux except for sec updates.
+# - name: "Upgrade packages"
+#   homebrew:
+#     upgrade_all: yes
+#   become: Yes
+#   become_user: "{{ homebrew_become_user }}"
