@@ -9,3 +9,8 @@
   hosts: workstations
   roles:
     - desktop
+
+- name: "Configure servers"
+  hosts: servers
+  roles:
+    - geerlingguy.security
