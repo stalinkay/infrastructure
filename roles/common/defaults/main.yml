@@ -1,5 +1,8 @@
 ---
 
+# Cron job
+ansible_cron_minutes: "30"
+
 # Mac configuration
 darwin_homebrew_taps:
   - argon/mas
