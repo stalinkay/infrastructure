@@ -6,9 +6,9 @@
 - include: setup-Darwin.yml
   when: ansible_os_family == 'Darwin'
 
-- name: "Apply configuration every hour"
+- name: "Apply configuration regularly"
   cron:
     name: "run ansible playbook"
-    minute: "30"
+    minute: "{{ ansible_cron_minutes }}"
     state: present
     value: "/opt/ansible/configuration/scripts/refresh-configuration.sh"
