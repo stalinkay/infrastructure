@@ -4,3 +4,8 @@
   hosts: all
   roles:
     - common
+
+- name: "Configure workstations"
+  hosts: workstations
+  roles:
+    - desktop
