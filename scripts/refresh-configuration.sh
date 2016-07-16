@@ -18,9 +18,12 @@ if ping -q -c 1 -W 1 github.com >/dev/null; then
   popd
 fi
 
-# ...then, even if we didn't update, run the Ansible playbook.
-ansible-playbook \
-  --connection=local \
-  --inventory-file=/opt/ansible/configuration/inventory.ini \
-  --limit="$(hostname)" \
-  /opt/ansible/configuration/configure-machines.yml
+# ...then, even if we didn't update, run the Ansible playbook. Using pushd/popd
+# so that ansible picks up the configuration options in ansible.cfg.
+pushd /opt/ansible/configuration
+  ansible-playbook \
+    --connection=local \
+    --inventory-file=./inventory.ini \
+    --limit="$(hostname)" \
+    ./configure-machines.yml
+popd
