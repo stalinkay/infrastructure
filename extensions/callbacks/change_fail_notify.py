@@ -1,10 +1,9 @@
 # Callback module for Ansible that sends an email when a host is changed or
 # a playbook fails.
 
-from ansible.plugins.callback import CallbackBase
-from ansible.utils.unicode import to_bytes
 import os
 import requests
+from ansible.plugins.callback import CallbackBase
 
 class CallbackModule(CallbackBase):
     CALLBACK_VERSION = 2.0
