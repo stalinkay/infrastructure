@@ -44,3 +44,9 @@ curl https://raw.githubusercontent.com/cweagans/infrastructure/master/scripts/ma
   * Ubuntu Xenial (16.04)
   * macOS (most recent)
   * Eventually: Windows (via cygwin installed ansible)
+
+## Known issues
+
+* Ansible's `user` module requires plaintext passwords to update the password on
+  macOS. This is dumb. The `user_accounts` role updates passwords for Linux-ish
+  systems, but not on macOS for this reason.
