@@ -11,7 +11,12 @@
   roles:
     - desktop
 
-- name: "Configure servers"
+- name: "Configure all servers"
   hosts: servers
   roles:
     - geerlingguy.security
+
+- name: "Configure Dokku hosts"
+  hosts: dokku
+  roles:
+    - docker
