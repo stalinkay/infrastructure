@@ -55,6 +55,11 @@ case "$(uname)" in
       brew install git
     fi
 
+    # We need a reasonable verison of Python, pip, and the requests module.
+    # We'll just do this unconditionally, as it doesn't hurt anything.
+    brew install python
+    pip install --upgrade requests
+
     # We also need to install Ansible. This is slightly complicated by the fact
     # that the version in Homebrew can update at any time, so if there are compat
     # issues between macOS and everything else, we'll pin this to a specific release
@@ -107,6 +112,11 @@ case "$(uname)" in
       echo "Installing git..."
       sudo apt-get -qq install git
     fi
+
+    # To match the behavior from the macOS provisioner, we'll just do this
+    # unconditionally.
+    sudo apt-get -qq install python-pip
+    pip install --upgrade requests
 
     if [ ! -x "$(which ansible)" ]; then
       echo "Installing ansible..."
