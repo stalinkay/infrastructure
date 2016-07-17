@@ -35,3 +35,4 @@
   shell: "dokku plugin:install {{ item.repo }} --commitish {{ item.version | default('master') }} --name {{ item.name}} "
   args:
     creates: "/var/lib/dokku/plugins/available/{{ item.name }}"
+  with_items: "{{ dokku_plugins }}"
