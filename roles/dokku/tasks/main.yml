@@ -37,19 +37,3 @@
     dest: "/var/lib/dokku/plugins/available/{{ item.name }}"
     version: "{{ item.version | default('master') }}"
   with_items: "{{ dokku_plugins }}"
-
-- name: "Enable Dokku plugins"
-  file:
-    src: "/var/lib/dokku/plguins/available/{{ item.name }}/"
-    dest: "/var/lib/dokku/plugins/enabled/{{ item.name }}"
-    state: link
-  with_items: "{{ dokku_plugins }}"
-  register: "dokku_plugin_enable_results"
-
-- name: "Install Dokku plugin dependencies"
-  shell: "dokku plugin:install-dependencies"
-  when: dokku_plugin_enable_results.changed
-
-- name: "Run install script for each newly enabled plugin"
-  shell: "[ -e /var/lib/dokku/plugins/enabled/{{ item.item.name }}/install ] && /var/lib/dokku/plugins/enabled/{{ item.item.name }}/install"
-  with_items: dokku_plugin_enable_results.results
