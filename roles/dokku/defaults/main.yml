@@ -20,5 +20,5 @@ dokku_debconf_settings:
     value: "/home/cweagans/.ssh/authorized_keys"
 
 dokku_plugins:
-  - name: dokku-logspout
+  - name: logspout
     repo: https://github.com/michaelshobbs/dokku-logspout.git
