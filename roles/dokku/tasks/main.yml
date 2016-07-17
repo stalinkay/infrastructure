@@ -37,3 +37,12 @@
     dest: "/var/lib/dokku/plugins/available/{{ item.name }}"
     version: "{{ item.version | default('master') }}"
   with_items: "{{ dokku_plugins }}"
+
+- name: "Set file ownership appropriately"
+  file:
+    path: "/var/lib/dokku/plugins/available/{{ item.name }}"
+    state: directory
+    owner: dokku
+    group: dokku
+    recurse: yes
+  with_items: "{{ dokku_plugins }}"
