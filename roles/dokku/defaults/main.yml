@@ -1,0 +1,25 @@
+---
+
+dokku_hostname: "dokku.cweagans.net"
+
+dokku_debconf_settings:
+  - setting: dokku/vhost_enable
+    vtype: boolean
+    value: true
+  - setting: dokku/web_config
+    vtype: boolean
+    value: false
+  - setting: dokku/hostname
+    vtype: string
+    value: "{{ dokku_hostname }}"
+  - setting: dokku/skip_key_file
+    vtype: boolean
+    value: false
+  - setting: dokku/key_file
+    vtype: string
+    value: "/home/cweagans/.ssh/authorized_keys"
+
+dokku_plugins:
+  - name: logspout
+    repo: https://github.com/michaelshobbs/dokku-logspout.git
+    state: enabled

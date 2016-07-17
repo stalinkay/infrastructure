@@ -44,3 +44,21 @@ curl https://raw.githubusercontent.com/cweagans/infrastructure/master/scripts/ma
   * Ubuntu Xenial (16.04)
   * macOS (most recent)
   * Eventually: Windows (via cygwin installed ansible)
+
+## Features
+  * No centralized Ansible runner is needed
+  * Simple bootstrapping process for new systems
+  * Automatically refreshes configuration when possible + repeatedly applies
+    configuration on an ongoing basis
+  * Sends an HTTP POST request when a playbook has changes or fails. Configurable
+    via the `NOTIFY_URL` environment variable.
+
+## Known issues
+
+* Ansible's `user` module requires plaintext passwords to update the password on
+  macOS. This is dumb. The `user_accounts` role updates passwords for Linux-ish
+  systems, but not on macOS for this reason.
+
+## TODO:
+
+* Replace the default notification URL in `change_fail_notify.py`
