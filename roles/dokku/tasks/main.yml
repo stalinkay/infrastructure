@@ -1,0 +1,45 @@
+---
+
+- name: "Add the Dokku repo key"
+  apt_key:
+    id: C2E73424D59097AB
+    url: https://packagecloud.io/gpg.key
+    state: present
+
+- name: "Add the Dokku packagecloud.io repo"
+  apt_repository:
+    repo: "deb https://packagecloud.io/dokku/dokku/ubuntu/ trusty main"
+    state: present
+    filename: "dokku"
+    update_cache: yes
+
+- name: "Set dokku debconf options"
+  debconf:
+    name: "dokku"
+    setting: "{{ item.setting }}"
+    value: "{{ item.value }}"
+    vtype: "{{ item.vtype }}"
+  with_items: "{{ dokku_debconf_settings }}"
+
+- name: "Install Dokku"
+  apt:
+    name: dokku
+    state: present
+  register: dokku_result
+
+- name: "Install Dokku dependencies"
+  shell: "sudo -E dokku plugin:install-dependencies --core"
+  when: dokku_result.changed
+
+- name: "Install Dokku plugins"
+  git:
+    repo: "{{ item.repo }}"
+    dest: "/var/lib/dokku/plugins/{{ item.name }}"
+    accept_hostkey: yes
+    version: "{{ item.version | default('master') }}"
+  with_items: "{{ dokku_plugins }}"
+  register: dokku_plugin_result
+
+- name: "Run post-plugin-install tasks"
+  shell: "sudo -E dokku plugins-install"
+  when: dokku_plugin_result.changed
