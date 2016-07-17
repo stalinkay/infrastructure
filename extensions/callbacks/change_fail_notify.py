@@ -17,7 +17,6 @@ class CallbackModule(CallbackBase):
             'namespace': 'ansible',
             'event_type': eventType,
             'context[host]': host,
-            'context[somethingelse]': 'whatever'
         }
 
         request_headers = {
