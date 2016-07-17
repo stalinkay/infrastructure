@@ -35,7 +35,7 @@
     - "docker-engine"
 
 - name: "Ensure Docker is running and starts on boot"
-  systemd:
+  service:
     name: docker
     enabled: yes
     state: started
