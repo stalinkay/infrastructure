@@ -1,3 +1,5 @@
 ---
 
 homebrew_become_user: "cweagans"
+
+user_admin_group: "admin"
