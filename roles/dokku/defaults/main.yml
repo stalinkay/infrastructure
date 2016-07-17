@@ -14,11 +14,11 @@ dokku_debconf_settings:
     value: "{{ dokku_hostname }}"
   - setting: dokku/skip_key_file
     vtype: boolean
-    value: true
+    value: false
   - setting: dokku/key_file
     vtype: string
-    value: ""
+    value: "/home/cweagans/.ssh/authorized_keys"
 
 dokku_plugins:
-  - name:
-    repo: 
+  - name: dokku-logspout
+    repo: https://github.com/michaelshobbs/dokku-logspout.git
