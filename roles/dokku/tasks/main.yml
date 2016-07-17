@@ -33,4 +33,5 @@
 
 - name: "Install Dokku plugins"
   shell: "dokku plugin:install {{ item.repo }} --commitish {{ item.version | default('master') }} --name {{ item.name}} "
-  creates: "/var/lib/dokku/plugins/available/{{ item.name }}"
+  args:
+    creates: "/var/lib/dokku/plugins/available/{{ item.name }}"
