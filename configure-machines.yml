@@ -20,3 +20,4 @@
   hosts: dokku
   roles:
     - docker
+    - dokku
