@@ -1,4 +1,4 @@
 ---
 
 dependencies:
-  - docker
+  - angstwad.docker_ubuntu
