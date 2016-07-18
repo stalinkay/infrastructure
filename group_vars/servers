@@ -3,3 +3,5 @@
 ansible_cron_minutes: "3,18,33,48"
 
 user_admin_group: "staff"
+
+docker_opts: "-s overlay2"
