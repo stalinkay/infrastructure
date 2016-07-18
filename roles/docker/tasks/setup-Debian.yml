@@ -31,8 +31,6 @@
     name: "{{ item }}"
     state: present
   with_items:
-    - "linux-image-virtual"
-    - "linux-image-extra-virtual"
     - "docker-engine"
 
 - name: "Ensure Docker is running and starts on boot"
