@@ -1,5 +1,13 @@
 ---
 
+# common
 ansible_cron_minutes: "3,18,33,48"
 
+# user_accounts
 user_admin_group: "staff"
+
+# angstwad.docker_ubuntu
+pip_install_pip: false
+pip_install_setuptools: false
+pip_install_docker_py: false
+pip_install_docker_compose: false
