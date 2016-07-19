@@ -11,3 +11,7 @@ pip_install_pip: false
 pip_install_setuptools: false
 pip_install_docker_py: false
 pip_install_docker_compose: false
+
+# geerlingguy.security
+security_sudoers_passworded:
+  - cweagans
