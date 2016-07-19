@@ -12,7 +12,7 @@ in `naming_wordlist.md`.
 
 * Host: Linode
 * Datacenter: Fremont, CA, USA
-* IP: 45.33.51.127
+* IP: 45.33.52.72
 * OS: Ubuntu 16.04
 * Additional names:
   * app01.fnc.cweagans.net

@@ -19,5 +19,5 @@
 - name: "Configure Dokku hosts"
   hosts: dokku
   roles:
-    - docker
+    - angstwad.docker_ubuntu
     - dokku
