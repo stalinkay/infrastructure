@@ -2,6 +2,15 @@
 
 # ATTENTION: This script is run as root periodically, so don't do stupid shit here.
 
+# First, check to see if there is another Ansible run already in progress.
+# If so, then exit. 0 exit code because it's not a failure. We're just choosing to skip.
+# If not, create the lock file.
+if [ -e /opt/ansible/refresh.lock ]; then
+  exit 0
+else
+  echo "Run started at $(date)" > /opt/ansible/refresh.lock
+fi
+
 # If we have an internet connection (working DNS + a route to Github), then
 # update our local copy of the Ansible playbooks if necessary...
 if ping -q -c 1 -W 1 github.com >/dev/null; then
@@ -27,3 +36,6 @@ pushd /opt/ansible/configuration
     --limit="$(hostname)" \
     ./configure-machines.yml
 popd
+
+# Finally, remove the lock file so that future configuration changes will run.
+rm /opt/ansible/refresh.lock
