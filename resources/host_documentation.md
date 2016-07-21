@@ -10,12 +10,12 @@ in `naming_wordlist.md`.
 
 ### mustang.cweagans.net
 
-* Host: Linode
-* Datacenter: Fremont, CA, USA
-* IP: 45.33.52.72
+* Host: Quickpacket
+* Datacenter: Atlanta, GA, USA
+* IP: 172.82.138.58
 * OS: Ubuntu 16.04
 * Additional names:
-  * app01.fnc.cweagans.net
+  * app01.atl.cweagans.net
   * dokku.cweagans.net
 * Notes:
   * 2GB RAM, 1 CPU core
