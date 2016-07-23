@@ -1,0 +1,38 @@
+---
+
+- name: "Set up Cloudflare DNS records"
+  hosts: localhost
+  connection: local
+  vars:
+    dns_record_list:
+      - domain: "cweagans.net"
+        entries:
+        - record: "mustang"
+          value: "172.82.138.58"
+          type: A
+        - record: "app01.atl"
+          value: "mustang.cweagans.net"
+          type: CNAME
+        - record: "dokku"
+          value: "mustang.cweagans.net"
+          type: CNAME
+        - record: "*.dokku"
+          value: "mustang.cweagans.net"
+          type: CNAME
+  tasks:
+    - name: Set up Cloudflare DNS records
+      cloudflare_dns:
+        account_email: "me@cweagans.net"
+        account_api_token: "{{ lookup('env', 'CLOUDFLARE_API_KEY') | default(omit) }}"
+        domain: "{{ item.domain }}"
+        type: "{{ item.type }}"
+        record: "{{ item.record }}"
+        value: "{{ item.value }}"
+        state: "{{ item.state }}"
+        port: "{{ item.port | default(omit)}}"
+        priority: "{{ item.priority | default(omit) }}"
+        proto: "{{ item.proto | default(omit) }}"
+        service: "{{ item.service | default(omit) }}"
+        ttl: "{{ item.ttl | default(omit) }}"
+        weight: "{{ item.weight | default(omit) }}"
+      with_dns_records: "{{ dns_record_list }}"
