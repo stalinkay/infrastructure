@@ -11,6 +11,11 @@
   roles:
     - desktop
 
+- name: "Configure router"
+  hosts: routers
+  roles:
+    - openwrt_router
+
 - name: "Configure all servers"
   hosts: servers
   roles:
