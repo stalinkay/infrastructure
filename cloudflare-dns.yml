@@ -19,6 +19,65 @@
         - record: "*.dokku"
           value: "mustang.cweagans.net"
           type: CNAME
+        - record: "mail"
+          value: "66.111.4.147"
+          type: A
+        - record: "cweagans.net"
+          value: "keybase-site-verification=e7eXdPU3dQQVgI52BLawde8mpxK-gHeANtRQbhrA5qA"
+          type: TXT
+        - record: "*"
+          value: "in1-smtp.messagingengine.com"
+          type: MX
+          priority: 10
+        - record: "cweagans.net"
+          value: "in1-smtp.messagingengine.com"
+          type: MX
+          priority: 10
+        - record: "cweagans.net"
+          value: "in2-smtp.messagingengine.com"
+          type: MX
+          priority: 10
+        - record: "exchange"
+          value: "in1-smtp.messagingengine.com"
+          type: MX
+          priority: 10
+        - record: "mail"
+          value: "in1-smtp.messagingengine.com"
+          type: MX
+          priority: 10
+        - record: "mail1"
+          value: "in1-smtp.messagingengine.com"
+          type: MX
+          priority: 10
+        - record: "mail2"
+          value: "in1-smtp.messagingengine.com"
+          type: MX
+          priority: 10
+        - record: "mail3"
+          value: "in1-smtp.messagingengine.com"
+          type: MX
+          priority: 10
+        - record: "mx"
+          value: "in1-smtp.messagingengine.com"
+          type: MX
+          priority: 10
+        - record: "mx1"
+          value: "in1-smtp.messagingengine.com"
+          type: MX
+          priority: 10
+        - record: "mx2"
+          value: "in1-smtp.messagingengine.com"
+          type: MX
+          priority: 10
+        - record: "mx3"
+          value: "in1-smtp.messagingengine.com"
+          type: MX
+          priority: 10
+        - record: "post"
+          value: "in1-smtp.messagingengine.com"
+          type: MX
+          priority: 10
+
   tasks:
     - name: Set up Cloudflare DNS records
       cloudflare_dns:
