@@ -10,6 +10,15 @@
         - record: "mustang"
           value: "172.82.138.58"
           type: A
+        - record: "cweagans.net"
+          value: "66.111.4.53"
+          type: A
+        - record: "cweagans.net"
+          value: "66.111.4.54"
+          type: A
+        - record: "www.cweagans.net"
+          value: "mustang.cweagans.net"
+          type: CNAME
         - record: "app01.atl"
           value: "mustang.cweagans.net"
           type: CNAME
@@ -24,6 +33,15 @@
           type: A
         - record: "cweagans.net"
           value: "keybase-site-verification=e7eXdPU3dQQVgI52BLawde8mpxK-gHeANtRQbhrA5qA"
+          type: TXT
+        - record: "mesmtp._domainkey.cweagans.net"
+          value: "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDmU1zu1Dxn/TVbPy7/n+suLFu4N7KUxv5O8wpPapGnXGEiwKW2zrXd51PBj1oWfuFG1E2cZoyk7bJQQJen8keSXOI1dbTAMNmflyD4fwLtU0IDr5vgHVjdsr0H5r2k3z/hWPdYBY4amqxnHx17cHYqyL+prmE8Ks1X5BddIi3a/QIDAQAB"
+          type: TXT
+        - record: "_adsp._domainkey.cweagans.net"
+          value: "dkim=unknown"
+          type: TXT
+        - record: "cweagans.net"
+          value: "v=spf1 include:spf.messagingengine.com ?all"
           type: TXT
         - record: "*"
           value: "in1-smtp.messagingengine.com"
