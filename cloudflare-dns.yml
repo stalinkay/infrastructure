@@ -43,58 +43,14 @@
         - record: "cweagans.net"
           value: "v=spf1 include:spf.messagingengine.com ?all"
           type: TXT
-        - record: "*"
-          value: "in1-smtp.messagingengine.com"
-          type: MX
-          priority: 10
         - record: "cweagans.net"
           value: "in1-smtp.messagingengine.com"
-          type: MX
           priority: 10
+          type: MX
         - record: "cweagans.net"
           value: "in2-smtp.messagingengine.com"
+          priority: 20
           type: MX
-          priority: 10
-        - record: "exchange"
-          value: "in1-smtp.messagingengine.com"
-          type: MX
-          priority: 10
-        - record: "mail"
-          value: "in1-smtp.messagingengine.com"
-          type: MX
-          priority: 10
-        - record: "mail1"
-          value: "in1-smtp.messagingengine.com"
-          type: MX
-          priority: 10
-        - record: "mail2"
-          value: "in1-smtp.messagingengine.com"
-          type: MX
-          priority: 10
-        - record: "mail3"
-          value: "in1-smtp.messagingengine.com"
-          type: MX
-          priority: 10
-        - record: "mx"
-          value: "in1-smtp.messagingengine.com"
-          type: MX
-          priority: 10
-        - record: "mx1"
-          value: "in1-smtp.messagingengine.com"
-          type: MX
-          priority: 10
-        - record: "mx2"
-          value: "in1-smtp.messagingengine.com"
-          type: MX
-          priority: 10
-        - record: "mx3"
-          value: "in1-smtp.messagingengine.com"
-          type: MX
-          priority: 10
-        - record: "post"
-          value: "in1-smtp.messagingengine.com"
-          type: MX
-          priority: 10
 
   tasks:
     - name: Set up Cloudflare DNS records
