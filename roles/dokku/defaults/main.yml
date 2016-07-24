@@ -18,8 +18,3 @@ dokku_debconf_settings:
   - setting: dokku/key_file
     vtype: string
     value: "/home/cweagans/.ssh/authorized_keys"
-
-dokku_plugins:
-  - name: logspout
-    repo: https://github.com/michaelshobbs/dokku-logspout.git
-    state: enabled
