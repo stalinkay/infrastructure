@@ -59,8 +59,8 @@ debian_apt_keys:
   - keyserver: pgp.mit.edu
     id: 5044912E
   # Steam
-  - keyserver: keyserver.ubuntu.com
-    id: F24AEA9FB05498B7
+  # - keyserver: keyserver.ubuntu.com
+    # id: F24AEA9FB05498B7
   # Google
   - url: https://dl-ssl.google.com/linux/linux_signing_key.pub
     id: 4CCA1EAF950CEE4AB83976DCA040830F7FAC5991
@@ -71,6 +71,6 @@ debian_packages:
   - "redshift"
   - "slack-desktop"
   - "spotify-client"
-  - "steam"
+  # - "steam"
   - "transmission"
   - "vlc"
