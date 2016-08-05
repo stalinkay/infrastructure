@@ -28,6 +28,9 @@
         - record: "*.dokku"
           value: "mustang.cweagans.net"
           type: CNAME
+        - record: "project"
+          value: "mustang.cweagans.net"
+          type: CNAME
         - record: "mail"
           value: "66.111.4.147"
           type: A
@@ -51,6 +54,27 @@
           value: "in2-smtp.messagingengine.com"
           priority: 20
           type: MX
+      - domain: "cameronandalli.wedding"
+        entries:
+        - record: "@"
+          value: "mustang.cweagans.net"
+          type: CNAME
+        - record: "www"
+          value: "mustang.cweagans.net"
+          type: CNAME
+        - record: "staging"
+          value: "mustang.cweagans.net"
+          type: CNAME
+      # Note: Cloudflare is configured with page rules to redirect to the .wedding
+      # site for now.
+      - domain: "cameronandalli.com"
+        entries:
+        - record: "@"
+          value: "mustang.cweagans.net"
+          type: CNAME
+        - record: "www"
+          value: "mustang.cweagans.net"
+          type: CNAME
 
   tasks:
     - name: Set up Cloudflare DNS records
