@@ -1,8 +1,0 @@
----
-
-openwrt_router_packages:
-  # General
-  - git
-  # Ansible dependencies
-  - python
-  - python-pip
