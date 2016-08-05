@@ -28,6 +28,7 @@ darwin_homebrew_casks:
   - alfred
   - bartender
   - dropbox
+  - enpass
   - flux
   - font-inconsolata
   - google-chrome-beta
@@ -64,9 +65,13 @@ debian_apt_keys:
   # Google
   - url: https://dl-ssl.google.com/linux/linux_signing_key.pub
     id: 4CCA1EAF950CEE4AB83976DCA040830F7FAC5991
+  # Enpass
+  - url: http://repo.sinew.in/keys/enpass-linux.key
+    id: 6F7565879798C2FC
 debian_packages:
   - "dropbox"
   - "fonts-inconsolata"
+  - "enpass"
   - "google-chrome-beta"
   - "redshift"
   - "slack-desktop"
