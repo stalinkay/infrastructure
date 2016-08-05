@@ -1,24 +1,7 @@
 ---
 
-- name: "Check Chrome RDH install state"
-  command: dpkg-query -W chrome-remote-desktop
-  register: chrome_rdh_check
-  failed_when: chrome_rdh_check.rc > 1
-  changed_when: chrome_rdh_check.rc == 1
-
-- name: "Download Chrome RDH package"
-  get_url:
-    url: "https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb"
-    dest: "/tmp/chrome_rdh.deb"
-  when: chrome_rdh_check == 1
-
-- name: "Install Chrome RDH package"
+- name: "Ensure Chrome RDH is installed"
   apt:
-    deb: "/tmp/chrome_rdh.deb"
-  when: chrome_rdh_check == 1
-
-- name: "Remove downloaded Chrome RDH package"
-  file:
-    path: "/tmp/chrome_rdh.deb"
-    state: absent
-  when: chrome_rdh_check == 1
+    name: "chrome-remote-desktop"
+    deb: "https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb"
+    state: present
