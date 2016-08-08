@@ -4,7 +4,6 @@
   hosts: all
   roles:
     - common
-    # - user_accounts
 
 - name: "Configure workstations"
   hosts: workstations
@@ -14,6 +13,7 @@
 - name: "Configure all servers"
   hosts: servers
   roles:
+    - user_accounts
     - geerlingguy.security
 
 - name: "Configure Dokku hosts"
