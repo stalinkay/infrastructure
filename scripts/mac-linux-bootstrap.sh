@@ -15,6 +15,10 @@ else
   branch="$2"
 fi
 
+if [ ! -z "$3" ]; then
+  vault_pw = "$3"
+fi
+
 # Bail out if we're in a Windows environment.
 case "$OSTYPE" in
   win*)
@@ -169,6 +173,11 @@ if [ ! -d "/opt/ansible" ]; then
   sudo mkdir /opt/ansible
 fi
 
+# If we have a vault pw, save it to /opt/ansible/vault_pw
+if [ ! -z "$vault_pw" ]; then
+  echo $vault_pw > /opt/ansible/vault_pw
+fi
+
 if [ ! -d "/opt/ansible/configuration" ]; then
   sudo git clone --branch=$branch https://github.com/cweagans/infrastructure.git /opt/ansible/configuration
 else
@@ -179,8 +188,17 @@ fi
 
 # Run the playbooks for this machine. This will also configure a cron job that
 # pulls changes and re-executes the playbooks going forward
-sudo ansible-playbook \
-  --connection=local \
-  --inventory-file=/opt/ansible/configuration/inventory.ini \
-  --limit="$(hostname)" \
-  /opt/ansible/configuration/configure-machines.yml
+if [ -e /opt/ansible/vault_pw ]; then
+  sudo ansible-playbook \
+    --connection=local \
+    --inventory-file=/opt/ansible/configuration/inventory.ini \
+    --limit="$(hostname)" \
+    --vault-password-file /opt/ansible/vault_pw \
+    /opt/ansible/configuration/configure-machines.yml
+else
+  sudo ansible-playbook \
+    --connection=local \
+    --inventory-file=/opt/ansible/configuration/inventory.ini \
+    --limit="$(hostname)" \
+    /opt/ansible/configuration/configure-machines.yml
+fi
