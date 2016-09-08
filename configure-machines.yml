@@ -8,7 +8,7 @@
 - name: "Configure workstations"
   hosts: workstations
   roles:
-    - desktop
+    - ubuntu_desktop
 
 - name: "Configure all servers"
   hosts: servers

@@ -14,21 +14,24 @@
     id: "{{ item.id }}"
     url: "{{ item.url | default(omit) }}"
     state: present
-  with_items: "{{ debian_apt_keys }}"
+  with_items: "{{ ubuntu_apt_keys }}"
 
 - name: "Add apt repos and update cache if needed"
   apt_repository:
     repo: "{{ item }}"
     state: present
     update_cache: yes
-  with_items: "{{ debian_apt_repos }}"
+  with_items: "{{ ubuntu_apt_repos }}"
 
 - name: "Install packages"
   apt:
     name: "{{ item }}"
     state: present
-  with_items: "{{ debian_packages }}"
+  with_items: "{{ ubuntu_packages }}"
 
 # Despite having a .deb available, Chrome RDH is not in the apt repo for some reason :(
-- name: "Install Chrome Remote Desktop Host"
-  include: debian-chrome-remote-desktop.yml
+- name: "Ensure Chrome RDH is installed"
+  apt:
+    name: "chrome-remote-desktop"
+    deb: "https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb"
+    state: present

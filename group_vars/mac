@@ -1,7 +1,0 @@
----
-
-# common
-user_admin_group: "admin"
-
-# desktop
-homebrew_become_user: "cweagans"
