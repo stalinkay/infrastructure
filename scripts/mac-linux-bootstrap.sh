@@ -45,64 +45,6 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # so we'll just handle every case we can.
 case "$(uname)" in
 
-  "Darwin")
-    # Before we can do anything else, we need Homebrew. Homebrew's installation
-    # script will also take care of installing xcode's cli tools if necessary.
-    if [ ! -x "$(which brew)" ]; then
-      /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    fi
-
-    # If some future version of macOS doesn't ship with Git, this will make sure
-    # this bootstrap script continues to work. Even if we don't install git here,
-    # the mac provisioning stuff will upgrade the system git later.
-    if [ ! -x "$(which git)" ]; then
-      brew install git
-    fi
-
-    # We need a reasonable verison of Python, pip, and the requests module.
-    # We'll just do this unconditionally, as it doesn't hurt anything.
-    brew install python
-    pip install --upgrade requests
-
-    # We also need to install Ansible. This is slightly complicated by the fact
-    # that the version in Homebrew can update at any time, so if there are compat
-    # issues between macOS and everything else, we'll pin this to a specific release
-    # later.
-    if [ ! -x "$(which ansible)" ]; then
-      brew install ansible
-    fi
-
-    # Configure the system hostname so that we can use the right playbook for
-    # provisioning.
-    echo "The hostname that you've chosen for this machine is:"
-    echo ""
-    echo "  $1"
-    echo ""
-    echo "Note that this MUST EXACTLY MATCH the hostname configured in the Ansible"
-    echo "inventory or provisioning will NOT work as expected. DOUBLE CHECK THIS"
-    echo "VALUE RIGHT NOW."
-    echo ""
-    echo "Waiting 10 seconds before continuing. If you made a typo, now is the time"
-    echo "to Ctrl+C before provisioning continues!"
-    sleep 6
-    echo "Seriously! You better be sure!"
-    sleep 2
-    echo "Last chance!"
-    echo "3"
-    sleep 1
-    echo "2"
-    sleep 1
-    echo "1"
-    sleep 1
-    echo "Setting hostname to $1 and continuing..."
-
-    sudo scutil --set ComputerName $1
-    sudo scutil --set HostName $1
-    # @TODO: This is failing for some reason.
-    # sudo scutil --set LocalHostName $new_hostname
-    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $1
-    ;;
-
   "Linux")
     # Bail out early if we're on a RHEL based distro. Nothing personal. I just
     # don't use them.
