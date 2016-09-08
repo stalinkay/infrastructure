@@ -12,7 +12,7 @@ ubuntu_apt_keys:
     id: BBEBDCB318AD50EC6865090613B00F1FD2C19886
   # Slack
   - url: https://packagecloud.io/slacktechnologies/slack/gpgkey
-    id: C2E73424D59097AB
+    id: C6ABDCF64DB9A0B2
   # Steam
   # - keyserver: keyserver.ubuntu.com
     # id: F24AEA9FB05498B7
