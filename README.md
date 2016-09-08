@@ -28,22 +28,20 @@ that you're configuring. Otherwise, provisioning may not work as expected.
 **Stable**:
 
 ```
-curl https://raw.githubusercontent.com/cweagans/infrastructure/master/scripts/mac-linux-bootstrap.sh | bash -s -- hostname.local
+curl https://raw.githubusercontent.com/cweagans/infrastructure/master/scripts/bootstrap.sh | bash -s -- hostname.local
 ```
 
 **Development**:
 
 ```
-curl https://raw.githubusercontent.com/cweagans/infrastructure/master/scripts/mac-linux-bootstrap.sh | bash -s -- hostname.local develop
+curl https://raw.githubusercontent.com/cweagans/infrastructure/master/scripts/bootstrap.sh | bash -s -- hostname.local develop
 ```
 
 ## Support
 
 (As in...OS support. I probably won't support you if you choose to use this directly)
 
-  * Ubuntu Xenial (16.04)
-  * macOS (most recent)
-  * Eventually: Windows (via cygwin installed ansible)
+  * Ubuntu Xenial (16.04) - Desktop or Server
 
 ## Features
   * No centralized Ansible runner is needed
@@ -52,12 +50,6 @@ curl https://raw.githubusercontent.com/cweagans/infrastructure/master/scripts/ma
     configuration on an ongoing basis
   * Sends an HTTP POST request when a playbook has changes or fails. Configurable
     via the `NOTIFY_URL` environment variable.
-
-## Known issues
-
-* Ansible's `user` module requires plaintext passwords to update the password on
-  macOS. This is dumb. The `user_accounts` role updates passwords for Linux-ish
-  systems, but not on macOS for this reason.
 
 ## TODO:
 

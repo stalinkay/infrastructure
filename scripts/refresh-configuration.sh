@@ -30,11 +30,20 @@ fi
 # ...then, even if we didn't update, run the Ansible playbook. Using pushd/popd
 # so that ansible picks up the configuration options in ansible.cfg.
 pushd /opt/ansible/configuration
-  ansible-playbook \
-    --connection=local \
-    --inventory-file=./inventory.ini \
-    --limit="$(hostname)" \
-    ./configure-machines.yml
+  if [ -e /opt/ansible/vault_pw ]; then
+    ansible-playbook \
+      --connection=local \
+      --inventory-file=./inventory.ini \
+      --limit="$(hostname)" \
+      --vault-password-file /opt/ansible/vault_pw \
+      ./configure-machines.yml
+  else
+    ansible-playbook \
+      --connection=local \
+      --inventory-file=./inventory.ini \
+      --limit="$(hostname)" \
+      ./configure-machines.yml
+  fi
 popd
 
 # Finally, remove the lock file so that future configuration changes will run.
