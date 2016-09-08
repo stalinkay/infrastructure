@@ -6,6 +6,7 @@ ubuntu_apt_repos:
   # - "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main"
   # - "deb [arch=amd64,i386] http://repo.steampowered.com/steam/ precise steam"
   - "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main"
+  - "deb http://repo.sinew.in/ stable main"
 ubuntu_apt_keys:
   # Spotify
   - keyserver: keyserver.ubuntu.com
