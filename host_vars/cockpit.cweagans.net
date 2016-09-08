@@ -3,7 +3,7 @@
 ubuntu_apt_repos:
   - "ppa:ansible/ansible"
   - "deb http://repository.spotify.com stable non-free"
-  - "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main"
+  # - "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main"
   # - "deb [arch=amd64,i386] http://repo.steampowered.com/steam/ precise steam"
   - "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main"
 ubuntu_apt_keys:
@@ -11,8 +11,8 @@ ubuntu_apt_keys:
   - keyserver: keyserver.ubuntu.com
     id: BBEBDCB318AD50EC6865090613B00F1FD2C19886
   # Slack
-  - url: https://packagecloud.io/slacktechnologies/slack/gpgkey
-    id: C6ABDCF64DB9A0B2
+  # - url: https://packagecloud.io/slacktechnologies/slack/gpgkey
+    # id: C6ABDCF64DB9A0B2
   # Steam
   # - keyserver: keyserver.ubuntu.com
     # id: F24AEA9FB05498B7
@@ -27,7 +27,7 @@ ubuntu_packages:
   - "enpass"
   - "google-chrome-beta"
   - "redshift"
-  - "slack-desktop"
+  # - "slack-desktop"
   - "spotify-client"
   # - "steam"
   - "transmission"
