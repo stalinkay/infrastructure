@@ -28,10 +28,3 @@
     name: "{{ item }}"
     state: present
   with_items: "{{ ubuntu_packages }}"
-
-# Despite having a .deb available, Chrome RDH is not in the apt repo for some reason :(
-- name: "Ensure Chrome RDH is installed"
-  apt:
-    name: "chrome-remote-desktop"
-    deb: "https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb"
-    state: present
