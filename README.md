@@ -28,13 +28,13 @@ that you're configuring. Otherwise, provisioning may not work as expected.
 **Stable**:
 
 ```
-curl https://raw.githubusercontent.com/cweagans/infrastructure/master/scripts/mac-linux-bootstrap.sh | bash -s -- hostname.local
+curl https://raw.githubusercontent.com/cweagans/infrastructure/master/scripts/bootstrap.sh | bash -s -- hostname.local
 ```
 
 **Development**:
 
 ```
-curl https://raw.githubusercontent.com/cweagans/infrastructure/master/scripts/mac-linux-bootstrap.sh | bash -s -- hostname.local develop
+curl https://raw.githubusercontent.com/cweagans/infrastructure/master/scripts/bootstrap.sh | bash -s -- hostname.local develop
 ```
 
 ## Support
