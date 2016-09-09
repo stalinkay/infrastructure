@@ -11,33 +11,33 @@
     path: "{{ item }}"
     state: directory
   with_items:
-    - "/opt/intellij"
-    - "/opt/intellij/downloads"
-    - "/opt/intellij/{{ intellij_build_identifier }}"
+    - "{{ intellij_path }}"
+    - "{{ intellij_path }}/downloads"
+    - "{{ intellij_path }}/{{ intellij_version }}"
 
 - name: Download IntelliJ
   get_url:
     url: "{{ intellij_download_url }}"
-    dest: "/opt/intellij/downloads/{{ intellij_build_identifier }}.tar.gz"
+    dest: "{{ intellij_path }}/downloads/{{ intellij_version }}.tar.gz"
   register: intellij_download
 
 - name: Unpack IntelliJ
   unarchive:
     remote_src: yes
-    src: "/opt/intellij/downloads/{{ intellij_build_identifier }}.tar.gz"
-    dest: "/opt/intellij/{{ intellij_build_identifier }}"
+    src: "{{ intellij_path }}/downloads/{{ intellij_version }}.tar.gz"
+    dest: "{{ intellij_path }}"
   when: intellij_download.changed
 
 - name: Create 'latest' symlink
   file:
-    src: "/opt/intellij/{{ intellij_build_identifier }}"
-    dest: "/opt/intellij/latest"
+    src: "{{ intellij_path }}/{{ intellij_version }}"
+    dest: "{{ intellij_path }}/latest"
     state: link
 
 - name: Create bin symlink
   file:
     follow: yes
-    src: "/opt/intellij/latest/bin/idea.sh"
+    src: "{{ intellij_path }}/latest/bin/idea.sh"
     dest: "/usr/bin/idea"
     state: link
 
