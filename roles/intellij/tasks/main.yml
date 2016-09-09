@@ -25,14 +25,20 @@
   unarchive:
     remote_src: yes
     src: "{{ intellij_path }}/downloads/{{ intellij_version }}.tar.gz"
-    dest: "{{ intellij_path }}"
+    dest: "{{ intellij_path }}/{{ intellij_version }}"
+  when: intellij_download.changed
+
+- name: Get real IntelliJ root
+  shell: "ls -d {{ intellij_path }}/{{ intellij_version }}/idea-IU-*"
+  register: intellij_root
   when: intellij_download.changed
 
 - name: Create 'latest' symlink
   file:
-    src: "{{ intellij_path }}/{{ intellij_version }}"
+    src: "{{ intellij_root.stdout }}"
     dest: "{{ intellij_path }}/latest"
     state: link
+  when: intellij_download.changed
 
 - name: Create bin symlink
   file:
@@ -40,9 +46,11 @@
     src: "{{ intellij_path }}/latest/bin/idea.sh"
     dest: "/usr/bin/idea"
     state: link
+  when: intellij_download.changed
 
 - name: Create desktop entry
-  copy:
-    src: intellij.desktop
+  template:
+    src: intellij.desktop.j2
     dest: /usr/share/applications/intellij.desktop
-    mode: 755
+    mode: 0644
+  when: intellij_download.changed

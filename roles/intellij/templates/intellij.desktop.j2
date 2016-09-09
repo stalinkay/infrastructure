@@ -1,11 +1,11 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name="IntelliJ IDEA"
-Exec="{{ intellij_path }}/latest/bin/idea.sh" %f
-Icon="{{ intellij_path }}/latest/bin/idea.png"
-Comment="Develop with IntelliJ!"
-Categories="Development;IDE"
+Name=IntelliJ IDEA
+Exec={{ intellij_root.stdout }}/latest/bin/idea.sh %f
+Icon={{ intellij_root.stdout }}/latest/bin/idea.png
+Comment=Develop with IntelliJ
+Categories=Development;IDE;
 Terminal=false
 StartupNotify=true
-StartupWMClass="jetbrains-intellij"
+StartupWMClass=jetbrains-intellij
