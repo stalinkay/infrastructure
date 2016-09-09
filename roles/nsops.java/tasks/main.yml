@@ -1,0 +1,8 @@
+---
+- name: Update apt cache
+  apt: update_cache=yes cache_valid_time=36000
+
+- name: Install Java 8
+  apt: name={{ item }} state=installed
+  with_items:
+    - openjdk-8-jdk
