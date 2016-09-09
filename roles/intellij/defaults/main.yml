@@ -2,7 +2,6 @@
 intellij_version: 2016.2.4
 intellij_build_identifier: "IU-162.1812.17"
 intellij_download_url: "https://download.jetbrains.com/idea/ideaIU-{{ intellij_version }}.tar.gz"
-intellij_archive_checksum: "d30f431763231d1666a1faa96d1f79589ae0cc539a955bd0d29745b2d51c1ef9"
 intellij_path: '/opt/intellij'
 intellij_dependencies:
   - openjdk-8-jdk

@@ -18,7 +18,6 @@
   get_url:
     url: "{{ intellij_download_url }}"
     dest: "/opt/intellij/downloads/{{ intellij_build_identifier }}.tar.gz"
-    checksum: "sha256:{{ intellij_archive_checksum }}"
   register: intellij_download
 
 - name: Unpack IntelliJ
