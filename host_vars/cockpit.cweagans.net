@@ -32,10 +32,12 @@ ubuntu_packages:
   - "transmission"
   - "vlc"
 ubuntu_manual_packages:
-  # Steam
-  - "https://steamcdn-a.akamaihd.net/client/installer/steam.deb"
+  # IntelliJ
+  - "https://download.jetbrains.com/idea/ideaIU-2016.2.3.tar.gz"
   # Slack
   - "https://downloads.slack-edge.com/linux_releases/slack-desktop-2.1.2-amd64.deb"
+  # Steam
+  - "https://steamcdn-a.akamaihd.net/client/installer/steam.deb"
   # Synology CloudStation Backup
   - "https://global.download.synology.com/download/Tools/CloudStationBackup/4.1-4224/Ubuntu/Installer/x86_64/synology-cloud-station-backup-4224.x86_64.deb"
   # Synology CloudStation Drive
