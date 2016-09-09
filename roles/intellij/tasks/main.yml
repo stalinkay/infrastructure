@@ -13,6 +13,7 @@
   with_items:
     - "/opt/intellij"
     - "/opt/intellij/downloads"
+    - "/opt/intellij/{{ intellij_build_identifier }}"
 
 - name: Download IntelliJ
   get_url:
