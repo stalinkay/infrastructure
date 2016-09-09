@@ -36,6 +36,7 @@
 
 - name: Create bin symlink
   file:
+    follow: yes
     src: "/opt/intellij/latest/bin/idea.sh"
     dest: "/usr/bin/idea"
     state: link
