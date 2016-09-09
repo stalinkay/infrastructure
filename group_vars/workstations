@@ -2,3 +2,9 @@
 
 # common
 ansible_cron_minutes: "42"
+
+# angstwad.docker_ubuntu
+pip_install_pip: false
+pip_install_setuptools: false
+pip_install_docker_py: false
+pip_install_docker_compose: false
