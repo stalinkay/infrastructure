@@ -3,20 +3,12 @@
 ubuntu_apt_repos:
   - "ppa:ansible/ansible"
   - "deb http://repository.spotify.com stable non-free"
-  # - "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main"
-  # - "deb [arch=amd64,i386] http://repo.steampowered.com/steam/ precise steam"
   - "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main"
   - "deb http://repo.sinew.in/ stable main"
 ubuntu_apt_keys:
   # Spotify
   - keyserver: keyserver.ubuntu.com
     id: BBEBDCB318AD50EC6865090613B00F1FD2C19886
-  # Slack
-  # - url: https://packagecloud.io/slacktechnologies/slack/gpgkey
-    # id: C6ABDCF64DB9A0B2
-  # Steam
-  # - keyserver: keyserver.ubuntu.com
-    # id: F24AEA9FB05498B7
   # Google
   - url: https://dl-ssl.google.com/linux/linux_signing_key.pub
     id: 4CCA1EAF950CEE4AB83976DCA040830F7FAC5991
@@ -28,8 +20,15 @@ ubuntu_packages:
   - "enpass"
   - "google-chrome-beta"
   - "redshift"
-  # - "slack-desktop"
   - "spotify-client"
-  # - "steam"
   - "transmission"
   - "vlc"
+ubuntu_manual_packages:
+  # Steam
+  - "https://steamcdn-a.akamaihd.net/client/installer/steam.deb"
+  # Slack
+  - "https://downloads.slack-edge.com/linux_releases/slack-desktop-2.1.2-amd64.deb"
+  # Synology CloudStation Backup
+  - "https://global.download.synology.com/download/Tools/CloudStationBackup/4.1-4224/Ubuntu/Installer/x86_64/synology-cloud-station-backup-4224.x86_64.deb"
+  # Synology CloudStation Drive
+  - "https://global.download.synology.com/download/Tools/CloudStationDrive/4.1-4224/Ubuntu/Installer/x86_64/synology-cloud-station-drive-4224.x86_64.deb"
