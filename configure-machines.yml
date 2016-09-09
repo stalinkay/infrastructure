@@ -8,6 +8,7 @@
 - name: "Configure workstations"
   hosts: workstations
   roles:
+    - angstwad.docker_ubuntu
     - ubuntu_desktop
 
 - name: "Configure all servers"
