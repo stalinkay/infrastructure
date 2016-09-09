@@ -10,8 +10,7 @@
   roles:
     - angstwad.docker_ubuntu
     - ubuntu_desktop
-    - nsops.java
-    - nsops.intellij
+    - intellij
 
 - name: "Configure all servers"
   hosts: servers

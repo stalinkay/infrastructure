@@ -1,0 +1,47 @@
+---
+
+- name: "Install dependencies"
+  apt:
+    name: "{{ item }}"
+    state: installed
+  with_items: "{{ intellij_dependencies }}"
+
+- name: Ensure /opt/intellij exists
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "/opt/intellij"
+    - "/opt/intellij/downloads"
+
+- name: Download IntelliJ
+  get_url:
+    url: "{{ intellij_download_url }}"
+    dest: "/opt/intellij/downloads/{{ intellij_build_identifier }}.tar.gz"
+    checksum: "sha256:{{ intellij_archive_checksum }}"
+  register: intellij_download
+
+- name: Unpack IntelliJ
+  unarchive:
+    remote_src: yes
+    src: "/opt/intellij/downloads/{{ intellij_build_identifier }}.tar.gz"
+    dest: "/opt/intellij/{{ intellij_build_identifier }}"
+  when: intellij_download.changed
+
+- name: Create 'latest' symlink
+  file:
+    src: "/opt/intellij/{{ intellij_build_identifier }}"
+    dest: "/opt/intellij/latest"
+    state: link
+
+- name: Create bin symlink
+  file:
+    src: "/opt/intellij/latest/bin/idea.sh"
+    dest: "/usr/bin/idea"
+    state: link
+
+- name: Create desktop entry
+  copy:
+    src: intellij.desktop
+    dest: /usr/share/applications/intellij.desktop
+    mode: 755
