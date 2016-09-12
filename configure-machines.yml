@@ -9,6 +9,7 @@
   hosts: workstations
   roles:
     - angstwad.docker_ubuntu
+    - user_accounts
     - ubuntu_desktop
     - intellij
 
