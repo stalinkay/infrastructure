@@ -20,3 +20,8 @@ user_accounts:
     pass: "$6$rounds=656000$BQ2ImRoOpbGgXMX.$5s4BIwZ.HN5Ws1pMfY0.tUqBqEOUEagcCUr7r6lm9TLkGD9FDY3/wK7BTC2Xbn4Ptf6kKfyPXp5/9Z26TQ00m/"
     groups: "{{ user_admin_group }},cdrom,sudo,dip,plugdev,sambashare,docker"
     shell: "zsh"
+
+# Sysctl options
+common_sysctl:
+  - name: "fs.inotify.max_user_watches"
+    value: 65536
