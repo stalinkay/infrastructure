@@ -11,3 +11,10 @@
   apt:
     name: zsh
     state: latest
+
+- name: "Apply sysctl configuration"
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items: "{{ common_sysctl }}"

@@ -2,3 +2,6 @@
 
 # Cron job
 ansible_cron_minutes: "30"
+
+# Sysctl options to apply.
+common_sysctl: []
