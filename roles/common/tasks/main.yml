@@ -6,3 +6,8 @@
     minute: "{{ ansible_cron_minutes }}"
     state: present
     value: "/opt/ansible/configuration/scripts/refresh-configuration.sh"
+
+- name: "Install zsh"
+  apt:
+    name: zsh
+    state: latest
