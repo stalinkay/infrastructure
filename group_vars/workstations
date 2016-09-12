@@ -6,8 +6,8 @@ ansible_cron_minutes: "42"
 # angstwad.docker_ubuntu
 pip_install_pip: false
 pip_install_setuptools: false
-pip_install_docker_py: false
-pip_install_docker_compose: false
+pip_install_docker_py: true
+pip_install_docker_compose: true
 
 # User accounts
 root_pass: "$6$rounds=656000$LZWJGvDA2LQ0vWIN$IYzV1CopY/JBApDk4dLxvkSU5uRTS2zpgTVu7/q.PlxSDm0m/Te497c318XOBM8qvNm7uW/QW2WJdfnS/WCdJ1"

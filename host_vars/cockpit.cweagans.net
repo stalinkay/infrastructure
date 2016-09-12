@@ -16,7 +16,6 @@ ubuntu_apt_keys:
   - url: http://repo.sinew.in/keys/enpass-linux.key
     id: 6F7565879798C2FC
 ubuntu_packages:
-  - "docker-compose"
   - "fonts-inconsolata"
   - "enpass"
   - "gnupg2"
