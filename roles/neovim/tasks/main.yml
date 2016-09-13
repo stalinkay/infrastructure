@@ -1,0 +1,30 @@
+---
+
+- name: "Add Neovim PPA"
+  apt_repository:
+    repo: "ppa:neovim-ppa/unstable"
+    state: present
+    update_cache: yes
+
+- name: "Install Neovim"
+  apt:
+    name: neovim
+    state: present
+
+- name: "Set up Neovim desktop integration"
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ item.dest }}"
+    owner: root
+    group: root
+    mode: "{{ item.mode }}"
+  with_items:
+    - url: https://raw.githubusercontent.com/fmoralesc/neovim-gnome-terminal-wrapper/master/neovim.desktop
+      dest: /usr/share/applications/neovim.desktop
+      mode: 0644
+    - url: https://raw.githubusercontent.com/fmoralesc/neovim-gnome-terminal-wrapper/master/neovim.svg
+      dest: /usr/share/icons/neovim.svg
+      mode: 0644
+    - url: https://raw.githubusercontent.com/fmoralesc/neovim-gnome-terminal-wrapper/master/nvim-wrapper
+      dest: /usr/bin/nvim-wrapper
+      mode: 0655

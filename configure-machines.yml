@@ -11,6 +11,7 @@
     - angstwad.docker_ubuntu
     - user_accounts
     - ubuntu_desktop
+    - neovim
     - intellij
 
 - name: "Configure all servers"
