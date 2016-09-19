@@ -30,6 +30,7 @@ ubuntu_apt_repos:
   - "deb http://repository.spotify.com stable non-free"
   - "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main"
   - "deb http://repo.sinew.in/ stable main"
+  - "deb http://linux.dropbox.com/ubuntu xenial main"
 ubuntu_apt_keys:
   # Spotify
   - keyserver: keyserver.ubuntu.com
@@ -40,6 +41,9 @@ ubuntu_apt_keys:
   # Enpass
   - url: http://repo.sinew.in/keys/enpass-linux.key
     id: 6F7565879798C2FC
+  # Dropbox
+  - keyserver: pgp.mit.edu
+    id: 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
 ubuntu_packages:
   - "fonts-inconsolata"
   - "enpass"
@@ -63,5 +67,3 @@ ubuntu_manual_packages:
   - "https://steamcdn-a.akamaihd.net/client/installer/steam.deb"
   # Synology CloudStation Backup
   - "https://global.download.synology.com/download/Tools/CloudStationBackup/4.1-4224/Ubuntu/Installer/x86_64/synology-cloud-station-backup-4224.x86_64.deb"
-  # Synology CloudStation Drive
-  - "https://global.download.synology.com/download/Tools/CloudStationDrive/4.1-4224/Ubuntu/Installer/x86_64/synology-cloud-station-drive-4224.x86_64.deb"
